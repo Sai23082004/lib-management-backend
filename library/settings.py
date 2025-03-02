@@ -28,7 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',  # Allow local development
     'localhost',   # Allow local development
-    'lib-management-backend-hu2z.onrender.com',  # Add your Render domain
+    'lib-management-backend-hu2z.onrender.com', 
+     'https://selflibrary.netlify.app/', # Add your Render domain
 ]
 
 
@@ -111,7 +112,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",  # ✅ Your frontend
     "http://localhost:3000",  # React frontend
     "http://127.0.0.1:5173",  # Vite frontend
-    "https://yourfrontend.com"  # Your deployed frontend
+    "https://selflibrary.netlify.app/"  # Your deployed frontend
 ]
 
 CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
