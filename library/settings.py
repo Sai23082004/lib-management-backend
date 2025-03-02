@@ -87,12 +87,19 @@ CSRF_TRUSTED_ORIGINS = [
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from the .env file
+load_dotenv()
+
+
 # Gmail SMTP server settings
 EMAIL_HOST = 'smtp.gmail.com'  # The SMTP server for Gmail
 EMAIL_PORT = 587  # The SMTP port for Gmail
 EMAIL_USE_TLS = True  # Use TLS (recommended by Gmail)
 EMAIL_HOST_USER = 'saiteja084084@gmail.com'  # Your Gmail address
-EMAIL_HOST_PASSWORD = 'utql yfgl iwgp zwuj'  # Your Gmail password (or app-specific password if 2FA enabled)
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Default email address for sending emails
 
 
