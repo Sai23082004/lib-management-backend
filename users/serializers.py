@@ -116,31 +116,33 @@ class GetBooksSerializer(serializers.ModelSerializer):
 class BooksSubmitSerializer(serializers.ModelSerializer):
     code = serializers.CharField(required=True)  # Ensure code is required
     id = serializers.IntegerField(required=True)
-    user = serializers.CharField(required=True)
+    # user = serializers.CharField(required=True)
     class Meta:
         model = BooksModel
-        fields = ['user','code','id']  # Removed 'user' and 'id' (handled internally)
+        fields = ['code','id']  # Removed 'user' and 'id' (handled internally)
 
     def validate(self, data):
-        request = self.context.get('request')  # Get authenticated user
-        if not request or not request.user:
-            raise serializers.ValidationError({"user": "Authentication required."})
+        # request = self.context.get('request')  # Get authenticated user
+        # if not request or not request.user:
+        #     raise serializers.ValidationError({"user": "Authentication required."})
 
-        user = request.user
-        roll = data.get('user')
-        try:
-            user_instance = UsersModel.objects.get(user=user,roll=roll)
-        except UsersModel.DoesNotExist:
-            raise serializers.ValidationError({"user": "User does not exist in the system."})
+        # user = request.user
+        # try:
+
+        # roll = data.get('user')
+        # try:
+        #     user_instance = UsersModel.objects.get(user=user,roll=roll)
+        # except UsersModel.DoesNotExist:
+        #     raise serializers.ValidationError({"user": "User does not exist in the system."})
 
         code = data.get('code')
         id = data.get('id')
 
         try:
-            book = BooksModel.objects.get(user=user_instance,id=id, code=code)
+            book = BooksModel.objects.get(id=id, code=code)
         except BooksModel.DoesNotExist:
             raise serializers.ValidationError({"book": "Book does not exist or does not belong to this user."})
 
-        data['user'] = user_instance  # Store user instance
+        # data['user'] = user_instance  # Store user instance
         data['book_instance'] = book  # Store book instance for use in view
         return data

@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'project',
     'users',
     'rest_framework',
+    'corsheaders',
     "rest_framework_simplejwt",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -60,34 +61,47 @@ SIMPLE_JWT = {
 
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # Add this line
+    'corsheaders.middleware.CorsMiddleware',  # ✅ CORS middleware for cross-origin requests
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  # ✅ REQUIRED for authentication
+    'django.contrib.messages.middleware.MessageMiddleware',  # ✅ REQUIRED for messages framework
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:5500",  # Add your frontend domain (if React/Vite)
+    "http://localhost:3000", 
+]
+
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Gmail SMTP server settings
+EMAIL_HOST = 'smtp.gmail.com'  # The SMTP server for Gmail
+EMAIL_PORT = 587  # The SMTP port for Gmail
+EMAIL_USE_TLS = True  # Use TLS (recommended by Gmail)
+EMAIL_HOST_USER = 'saiteja084084@gmail.com'  # Your Gmail address
+EMAIL_HOST_PASSWORD = 'utql yfgl iwgp zwuj'  # Your Gmail password (or app-specific password if 2FA enabled)
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Default email address for sending emails
+
+
 ROOT_URLCONF = 'library.urls'
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True  # ✅ Allow cookies and authentication headers
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React frontend (Change as needed)
+    "http://127.0.0.1:5500",  # ✅ Your frontend
+    "http://localhost:3000",  # React frontend
     "http://127.0.0.1:5173",  # Vite frontend
-    "https://yourfrontend.com"  # Deployed frontend
+    "https://yourfrontend.com"  # Your deployed frontend
 ]
 
-CORS_ALLOW_METHODS = [
-    "GET",
-    "POST",
-    "PUT",
-    "PATCH",
-    "DELETE",
-    "OPTIONS"
-]
+CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
 
 CORS_ALLOW_HEADERS = [
     "Authorization",
@@ -95,7 +109,6 @@ CORS_ALLOW_HEADERS = [
     "X-CSRFToken",
     "x-requested-with"
 ]
-
 
 TEMPLATES = [
     {
