@@ -13,6 +13,10 @@ from django.http import JsonResponse
 from .utils import send_otp_email
 from .models import *
 
+from django.http import JsonResponse
+
+def home(request):
+    return JsonResponse({"message": "Django Backend is Running!"})
 
 def get_csrf_token(request):
     return JsonResponse({"csrfToken": get_token(request)})
