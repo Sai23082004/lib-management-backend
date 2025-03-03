@@ -148,8 +148,12 @@ WSGI_APPLICATION = 'library.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'library_ymzr',
+        'USER': 'root',
+        'PASSWORD': 'vSZMh595HRObr20Rkqa1xazOl9igq4OY',
+        'HOST': 'dpg-cv2j4qdds78s73eddj60-a',  # Use '127.0.0.1' if needed
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
 
