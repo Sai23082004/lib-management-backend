@@ -8,6 +8,7 @@ urlpatterns = [
     path('studentregister/',StudentRegistrations.as_view()),
     path('books/',GetAllBooks.as_view()),
     path('allstudents/',GetAllStudents.as_view()),
+    path('student/delete/',DeleteStudent.as_view()),
     path('logout/', Logout.as_view(), name='logout'),
     path('get-csrf/', get_csrf_token),  # CSRF Token API
     path('register/verify-otp/', RegisterVerifyOTP.as_view(), name='register_verify_otp'),

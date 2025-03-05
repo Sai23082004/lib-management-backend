@@ -12,6 +12,7 @@ from django.middleware.csrf import get_token
 from django.http import JsonResponse
 from .utils import send_otp_email
 from .models import *
+from django.contrib.auth.models import User
 
 from django.http import JsonResponse
 
@@ -216,3 +217,21 @@ class GetAllStudents(APIView):
         serializer = StudentSerializer(users,many = True)
         return Response(serializer.data,status=status.HTTP_200_OK)
 
+class DeleteStudent(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def delete(self, request):
+        roll = request.data.get('roll') 
+        if not roll:
+            return Response({"roll":"roll number required"},status=status.HTTP_400_BAD_REQUEST)
+        vendor = request.user
+        try:
+            user = User.objects.get(username=vendor)
+        except User.DoesNotExist:
+            return Response({"error":"library not found"},status=status.HTTP_400_BAD_REQUEST)
+        try:
+            student = UsersModel.objects.get(user=user,roll=roll)  
+        except UsersModel.DoesNotExist:
+            return Response({"error":"user not found"},status=status.HTTP_400_BAD_REQUEST)
+        student.delete() 
+        return Response({"success":"user has been deleted successfully"},status=status.HTTP_200_OK)
