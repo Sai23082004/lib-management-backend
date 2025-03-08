@@ -151,11 +151,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'library_ymzr',
         'USER': 'root',
-        'PASSWORD': 'vSZMh595HRObr20Rkqa1xazOl9igq4OY',
+        'PASSWORD': os.getenv("DATABASE_PASSWORD"),
         'HOST': 'dpg-cv2j4qdds78s73eddj60-a',  # Use '127.0.0.1' if needed
         'PORT': '5432',  # Default PostgreSQL port
     }
 }
+
 
 
 # Password validation
