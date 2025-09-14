@@ -149,10 +149,10 @@ WSGI_APPLICATION = 'library.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'library_ymzr',
+        'NAME': 'library_ymzr_1teq',
         'USER': 'root',
         'PASSWORD': os.getenv("DATABASE_PASSWORD"),
-        'HOST': 'dpg-cv2j4qdds78s73eddj60-a',  # Use '127.0.0.1' if needed
+        'HOST': 'dpg-d338hm8dl3ps738lgtc0-a',  # Use '127.0.0.1' if needed
         'PORT': '5432',  # Default PostgreSQL port
     }
 }
