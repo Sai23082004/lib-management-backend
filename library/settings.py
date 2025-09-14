@@ -148,12 +148,12 @@ WSGI_APPLICATION = 'library.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'library_ymzr_1teq',
-        'USER': 'root',
-        'PASSWORD': os.getenv("DATABASE_PASSWORD"),
-        'HOST': 'dpg-d338hm8dl3ps738lgtc0-a',  # Use '127.0.0.1' if needed
-        'PORT': '5432',  # Default PostgreSQL port
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'defaultdb',
+        'USER': 'avnadmin',
+        'PASSWORD': 'AVNS_Go_OpiobEDoxW1oc6iv',
+        'HOST': 'mysql-1074c36f-lib.k.aivencloud.com',  # Use '127.0.0.1' if needed
+        'PORT': '25085',  # Default PostgreSQL port
     }
 }
 
