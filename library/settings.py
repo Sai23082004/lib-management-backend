@@ -86,35 +86,35 @@ CSRF_TRUSTED_ORIGINS = [
 
 # settings.py
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-# from dotenv import load_dotenv
-# import os
+from dotenv import load_dotenv
+import os
 
 # Load environment variables from the .env file
-# load_dotenv()
+load_dotenv()
 
 
 # Gmail SMTP server settings
-# EMAIL_HOST = 'smtp.gmail.com'  # The SMTP server for Gmail
-# EMAIL_PORT = 587  # The SMTP port for Gmail
-# EMAIL_USE_TLS = True  # Use TLS (recommended by Gmail)
-# EMAIL_HOST_USER = 'saiteja084084@gmail.com'  # Your Gmail address
-# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Default email address for sending emails
+EMAIL_HOST = 'smtp.gmail.com'  # The SMTP server for Gmail
+EMAIL_PORT = 587  # The SMTP port for Gmail
+EMAIL_USE_TLS = True  # Use TLS (recommended by Gmail)
+EMAIL_HOST_USER = 'saiteja084084@gmail.com'  # Your Gmail address
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Default email address for sending emails
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_PORT = 2525  # Must be integer, not string
-EMAIL_HOST_USER = 'f866d3f4bf891e'
-EMAIL_HOST_PASSWORD = '****b29a'
+# EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+# EMAIL_PORT = 2525  # Must be integer, not string
+# EMAIL_HOST_USER = 'f866d3f4bf891e'
+# EMAIL_HOST_PASSWORD = '****b29a'
 
-EMAIL_USE_TLS = True   # STARTTLS supported on all ports
-EMAIL_USE_SSL = False  # Do NOT enable SSL for port 2525
+# EMAIL_USE_TLS = True   # STARTTLS supported on all ports
+# EMAIL_USE_SSL = False  # Do NOT enable SSL for port 2525
 
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
 
