@@ -106,17 +106,13 @@ CSRF_TRUSTED_ORIGINS = [
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_PORT = 2525
-EMAIL_USE_TLS = True
+EMAIL_PORT = 2525  # Must be integer, not string
+EMAIL_HOST_USER = 'f866d3f4bf891e'
+EMAIL_HOST_PASSWORD = '****b29a'
 
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True   # STARTTLS supported on all ports
+EMAIL_USE_SSL = False  # Do NOT enable SSL for port 2525
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
